@@ -7,8 +7,8 @@ modelo <- lm(circumference ~ age, data = Orange)
 a <- coef(modelo)[1]
 b <- coef(modelo)[2]
 
-cat("Coeficiente de inclinação (a):", a, "\n")
-cat("Coeficiente de interceptação (b):", b, "\n")
+cat("Coeficiente angular (a):", a, "\n")
+cat("Coeficiente linear (b):", b, "\n")
 
 # Variância residual (erro)
 var_erro <- summary(modelo)$sigma^2
