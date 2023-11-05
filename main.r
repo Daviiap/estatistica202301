@@ -72,14 +72,14 @@ dev.off()
 
 # Gráfico de dispersão entre "age" e "circumference"
 png(
-  file = "hist_age_ircum.png",
+  file = "dispersao.png",
   width = 600, height = 350
 )
 plot(
-  data$age,
   data$circumference,
-  xlab = "Idade",
-  ylab = "Circunferência",
+  data$age,
+  xlab = "Circunferência",
+  ylab = "Idade",
   main = "Gráfico de Dispersão"
 )
 dev.off()
@@ -145,7 +145,7 @@ teste_hip_media <- t.test(data$age,
                           mu = valor_teste_media,
                           confident.interval = 0.95)
 
-print(teste_hip_media$p.value)
+cat(paste('p valor para o teste de hipotese para média = 920: ', toString(teste_hip_media$p.value)))
 
 ## PONTO 04
 
@@ -172,8 +172,8 @@ modelo <- lm(age ~ circumference, data = Orange)
 a <- coef(modelo)[1]
 b <- coef(modelo)[2]
 
-cat("Coeficiente angular (a):", a, "\n")
-cat("Coeficiente linear (b):", b, "\n")
+cat("Coeficiente angular (beta-0):", a, "\n")
+cat("Coeficiente linear (beta-1):", b, "\n")
 
 # Variância residual (erro)
 var_erro <- summary(modelo)$sigma^2
@@ -188,5 +188,10 @@ cat("O coeficiente de determinação (R²) representa a proporção da variabili
 cat("Neste caso, aproximadamente", r2 * 100, "% da variabilidade é explicada pela idade das árvores.", "\n")
 
 # Gráfico de dispersão dos dados e reta ajustada
+png(
+  file = "reta-ajustada.png",
+  width = 600, height = 350
+)
 plot(Orange$circumference, Orange$age, main = "Regressão Linear", xlab = "Circunferência", ylab = "Idade")
 abline(modelo, col = "red")
+dev.off()
