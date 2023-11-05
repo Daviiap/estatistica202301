@@ -13,6 +13,7 @@ print(shapiro_test)
 # Calculando o coeficiente de correlação de Pearson entre as variáveis age e circumference
 
 correlation <- cor.test(data$age, data$circumference, method = "pearson")
+
+# Como o valor p é maior que 0.05, não rejeitamos a hipótese nula de que as variáveis age e circumference não são correlacionadas
+
 print(correlation)
-
-
